@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+
+  background-color: #313050;
+  padding: 20px 0px;
+}
+.nav {
+  width: 100%;
+  padding: 0 20px;
+}
+a.nav-link {
+  color: rgb(236, 234, 234);
+  font-size: 21px;
+  font-weight: bold;
+  font-style: none;
+  padding-right: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+a.nav-link:hover {
+  color: #fff;
+  transition: all 0.5s;
+  font-weight: 800;
+
+  text-shadow: 2px 3px 7px #e4e58e;
+}
