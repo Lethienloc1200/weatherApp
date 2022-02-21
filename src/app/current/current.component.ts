@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { CurrenWeather } from '../curren-weather';
+import { ActivatedRoute } from '@angular/router';
+// import 'rxjs,Rx';
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
@@ -8,10 +10,13 @@ import { CurrenWeather } from '../curren-weather';
 })
 export class CurrentComponent implements OnInit {
   myWeather!: CurrenWeather;
+  // location: any = {};
 
-  constructor(private ws: WeatherService) {}
+  constructor(private ws: WeatherService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.myWeather = this.ws.weatherNow();
+  ngOnInit() {
+    this.route.data.subscribe((data: { myWeather: CurrenWeather }) => {
+      this.myWeather = data.myWeather;
+    });
   }
 }

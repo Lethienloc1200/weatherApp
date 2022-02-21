@@ -1,0 +1,13 @@
+.text-align-center {
+  text-align: center;
+  margin: 40px 0px;
+  color: rgb(3, 42, 184);
+}
+.container-auto {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-5 {
+  padding: 20px;
+}

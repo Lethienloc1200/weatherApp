@@ -8,6 +8,8 @@ import { CurrentComponent } from './current/current.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { weatherRouting } from './weather.routing';
 import { WeatherService } from './weather.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ResolveLocationService } from './resolve-location.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,8 +17,8 @@ import { WeatherService } from './weather.service';
     CurrentComponent,
     ForecastComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, weatherRouting],
-  providers: [WeatherService],
+  imports: [BrowserModule, AppRoutingModule, weatherRouting, HttpClientModule],
+  providers: [WeatherService, ResolveLocationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

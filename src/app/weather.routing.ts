@@ -5,10 +5,15 @@ import { NgModule } from '@angular/core';
 
 import { CurrentComponent } from './current/current.component';
 import { ForecastComponent } from './forecast/forecast.component';
+import { ResolveLocationService } from './resolve-location.service';
 // const routes: Routes = [];
 
 const WEATHER_ROUTER: Routes = [
-  { path: '', component: CurrentComponent },
+  {
+    path: '',
+    component: CurrentComponent,
+    resolve: { myWeather: ResolveLocationService },
+  },
   { path: 'forecast', component: ForecastComponent },
 ];
 
