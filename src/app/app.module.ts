@@ -6,10 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CurrentComponent } from './current/current.component';
 import { ForecastComponent } from './forecast/forecast.component';
-import { weatherRouting } from './weather.routing';
-import { WeatherService } from './weather.service';
+import { WeatherService } from './service/weather.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ResolveLocationService } from './resolve-location.service';
+import { ResolveLocationService } from './service/resolve-location.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +16,7 @@ import { ResolveLocationService } from './resolve-location.service';
     CurrentComponent,
     ForecastComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, weatherRouting, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [WeatherService, ResolveLocationService],
   bootstrap: [AppComponent],
 })

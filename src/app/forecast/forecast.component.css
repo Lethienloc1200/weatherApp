@@ -3,11 +3,63 @@
   margin: 40px 0px;
   color: rgb(3, 42, 184);
 }
+
+.day-5 {
+  padding: 20px;
+}
 .container-auto {
+  text-align: center;
+  margin: auto;
+  width: 70%;
+  padding-top: 20px;
+  display: flex;
+  flex: wrap;
   display: flex;
   justify-content: space-between;
 }
 
-.day-5 {
-  padding: 20px;
+.black-bg {
+  background-color: #b5bbff47;
+  height: 500px;
+  margin: 0 50px;
+  box-shadow: 2px -2px 8px 3px #d4d0e9;
+}
+.temp-deg {
+  padding-top: 20px;
+
+  color: orange;
+}
+
+img.img {
+  width: 150px;
+
+  height: 150px;
+
+  object-fit: contain;
+}
+
+.kind-weather {
+  margin: 5px 0px 29px 0px;
+
+  font-size: 25px;
+
+  font-weight: bold;
+
+  color: orange;
+
+  text-transform: uppercase;
+
+  text-shadow: 3px 2px 5px #222;
+}
+
+.temp-max {
+  margin: 10px 0px;
+
+  color: orange;
+}
+
+.temp-min {
+  margin: 10px 0px;
+
+  color: rgba(0, 0, 255, 0.527);
 }

@@ -7,6 +7,6 @@ import { WeatherService } from './weather.service';
 export class ResolveLocationService implements Resolve<any> {
   constructor(private ws: WeatherService) {}
   resolve() {
-    return this.ws.localWeather();
+    // return this.ws.localWeather();
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../weather.service';
-import { CurrenWeather } from '../curren-weather';
+import { WeatherService } from '../service/weather.service';
+import { CurrenWeather } from '../model/curren-weather.model';
 import { ActivatedRoute } from '@angular/router';
 // import 'rxjs,Rx';
 @Component({
@@ -9,14 +9,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./current.component.css'],
 })
 export class CurrentComponent implements OnInit {
-  myWeather!: CurrenWeather;
-  // location: any = {};
+  location: any = {};
+  myWeather: CurrenWeather = new CurrenWeather();
 
-  constructor(private ws: WeatherService, private route: ActivatedRoute) {}
+  constructor(
+    private weatherService: WeatherService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.route.data.subscribe((data: { myWeather: CurrenWeather }) => {
-      this.myWeather = data.myWeather;
+    this.getLocation();
+  }
+
+  getLocation() {
+    new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        this.location = pos.coords;
+        const lat = this.location.latitude;
+        const lon = this.location.longitude;
+        this.weatherService.getDataWeather(lat, lon).subscribe((res) => {
+          console.log(' check res:', res);
+          this.myWeather = new CurrenWeather(res);
+        });
+      });
     });
   }
 }
