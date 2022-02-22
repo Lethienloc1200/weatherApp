@@ -2,9 +2,13 @@
   text-align: center;
   margin: auto;
   width: 50%;
-  padding-top: 20px;
-  /* background-color: yellow; */
+  box-shadow: 1px 1px 9px 3px #00000026;
+  height: auto;
+  width: 400px;
+  padding: 23px 0px;
+  border-radius: 5px;
 }
+
 .temp-deg {
   padding-top: 20px;
   color: orange;
@@ -28,5 +32,14 @@ img.img {
 }
 .temp-min {
   margin: 10px 0px;
-  color: blue;
+  color: #313050;
+}
+.text-align-center {
+  width: 400px;
+  padding: 10px 0px;
+  box-shadow: 1px 1px 9px 3px #00000026;
+  text-align: center;
+  margin: 29px auto;
+  color: #313050;
+  border-radius: 5px;
 }

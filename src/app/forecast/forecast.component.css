@@ -10,11 +10,10 @@
 .container-auto {
   text-align: center;
   margin: auto;
-  width: 70%;
+  width: 80%;
   padding-top: 20px;
   display: flex;
-  flex: wrap;
-  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -26,40 +25,46 @@
 }
 .temp-deg {
   padding-top: 20px;
-
   color: orange;
 }
 
 img.img {
   width: 150px;
-
   height: 150px;
-
   object-fit: contain;
 }
 
 .kind-weather {
   margin: 5px 0px 29px 0px;
-
   font-size: 25px;
-
   font-weight: bold;
-
   color: orange;
-
   text-transform: uppercase;
-
   text-shadow: 3px 2px 5px #222;
 }
 
 .temp-max {
   margin: 10px 0px;
-
   color: orange;
 }
 
 .temp-min {
   margin: 10px 0px;
+  color: #313050;
+}
 
-  color: rgba(0, 0, 255, 0.527);
+@media (max-width: 1300px) {
+  * {
+  }
+  .container-auto {
+    justify-content: space-around;
+  }
+
+  .black-bg {
+    background-color: #b5bbff47;
+    height: auto;
+    margin: 0 50px;
+    box-shadow: 2px -2px 8px 3px #d4d0e9;
+    margin-bottom: 20px;
+  }
 }
