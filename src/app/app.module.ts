@@ -9,12 +9,15 @@ import { ForecastComponent } from './forecast/forecast.component';
 import { WeatherService } from './service/weather.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ResolveLocationService } from './service/resolve-location.service';
+import { ProductWeatherComponent } from './product-weather/product-weather.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CurrentComponent,
     ForecastComponent,
+    ProductWeatherComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [WeatherService, ResolveLocationService],
