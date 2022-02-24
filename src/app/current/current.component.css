@@ -20,6 +20,7 @@ img.img {
 .kind-weather {
   margin: 5px 0px 29px 0px;
   font-size: 25px;
+  font-family: sans-serif;
   font-weight: bold;
   color: orange;
   text-transform: uppercase;
@@ -27,10 +28,12 @@ img.img {
 }
 .temp-max {
   margin: 10px 0px;
+  font-family: sans-serif;
   color: orange;
 }
 .temp-min {
   margin: 10px 0px;
+  font-family: sans-serif;
   color: #313050;
 }
 .text-align-center {
@@ -39,6 +42,7 @@ img.img {
   box-shadow: 1px 1px 9px 3px #00000026;
   text-align: center;
   margin: 29px auto;
+  font-family: sans-serif;
   color: #313050;
   border-radius: 5px;
 }

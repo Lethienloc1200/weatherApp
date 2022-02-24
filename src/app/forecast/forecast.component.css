@@ -15,17 +15,20 @@ img.img {
   font-size: 25px;
   font-weight: bold;
   color: orange;
+  font-family: sans-serif;
   text-transform: uppercase;
   text-shadow: 3px 2px 5px #222;
 }
 
 .temp-max {
   margin: 10px 0px;
+  font-family: sans-serif;
   color: orange;
 }
 
 .temp-min {
   margin: 10px 0px;
+  font-family: sans-serif;
   color: #313050;
 }
 .search {

@@ -11,7 +11,7 @@
     <div *ngFor="let day of cityForeCast" class="box-weather">
       <h2 class="temp-deg">{{day.day | date:'MMMM d'}} &deg;C</h2>
       <img src="http://openweathermap.org/img/wn/{{day.icon}}.png" alt="" class="img">
-      <h3 class="kind-weather">{{day.tempMax}}</h3>
+      <h3 class="kind-weather">{{day.weatherKind}}</h3>
       <h4 class="temp-max">Nhiệt độ cao nhất: {{day.tempMax}}&deg;C</h4>
       <h4 class="temp-min">Nhiệt độ thấp nhất: {{day.tempMin}}&deg;C</h4>
     </div>
