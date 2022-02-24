@@ -3,6 +3,7 @@ import { WeatherService } from '../service/weather.service';
 import { CurrenWeather } from '../model/curren-weather.model';
 import { ActivatedRoute } from '@angular/router';
 // import 'rxjs,Rx';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
@@ -20,7 +21,9 @@ export class CurrentComponent implements OnInit {
   ngOnInit() {
     this.getLocation();
   }
-
+  onSubmit(f: NgForm) {
+    this.findLocation(f);
+  }
   getLocation() {
     new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition((pos) => {
@@ -32,6 +35,17 @@ export class CurrentComponent implements OnInit {
           this.myWeather = new CurrenWeather(res);
         });
       });
+    });
+  }
+
+  findLocation(f: NgForm) {
+    new Promise((resolve, reject) => {
+      this.weatherService
+        .getDataWeatherToFind(f.value.city)
+        .subscribe((res) => {
+          console.log(' check res find location:', res);
+          this.myWeather = new CurrenWeather(res);
+        });
     });
   }
 }

@@ -1,7 +1,6 @@
 .container-auto {
   text-align: center;
   margin: auto;
-  width: 50%;
   box-shadow: 1px 1px 9px 3px #00000026;
   height: auto;
   width: 400px;
@@ -42,4 +41,43 @@ img.img {
   margin: 29px auto;
   color: #313050;
   border-radius: 5px;
+}
+.search {
+  height: 60px;
+  text-align: center;
+  margin: auto;
+}
+.search {
+  position: relative;
+  width: 400px;
+  height: 50px;
+
+  margin-top: 20px;
+}
+.input-search {
+  width: 100%;
+  padding: 7px 25px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  font-size: 25px;
+  color: #666;
+  height: 100%;
+  box-shadow: 1px 1px 9px 3px #00000026;
+  border: 1px solid rgba(181, 161, 161, 0.531);
+}
+button {
+  background: none;
+  border: none;
+  line-height: 50px;
+  font-size: 25px;
+  position: absolute;
+  right: 5px;
+  color: #666;
+  cursor: pointer;
+  top: 0px;
+  display: inline;
+}
+button:hover {
+  color: #333;
 }

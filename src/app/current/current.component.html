@@ -11,3 +11,9 @@
   <h4 class="temp-min">Nhiệt độ thấp nhất: {{myWeather.tempMin}}&deg;</h4>
 
 </div>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div class="search">
+    <input placeholder="Tìm kiếm theo địa điểm" name="city" ngModel class="input-search" type="text"> <button><i
+        class="fa fa-search"></i></button>
+  </div>
+</form>

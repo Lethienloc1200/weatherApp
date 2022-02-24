@@ -1,11 +1,19 @@
 <h2 class="text-align-center">Dự báo thời tiết cho 5 ngày tới</h2>
 <div class="black-bg">
+  <form [formGroup]="forecastForm" (ngSubmit)="onSubmit()">
+    <!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate></form> -->
+    <div class="search">
+      <input formControlName="forecastCity" class="input-search" type="text" placeholder="Tìm theo thành phố">
+      <button><i class="fa fa-search"></i></button>
+    </div>
+  </form>
   <div class="container-auto">
-
-    <app-product-weather> </app-product-weather>
-    <app-product-weather> </app-product-weather>
-    <app-product-weather> </app-product-weather>
-    <app-product-weather> </app-product-weather>
-    <app-product-weather> </app-product-weather>
+    <div *ngFor="let day of cityForeCast" class="box-weather">
+      <h2 class="temp-deg">{{day.day | date:'MMMM d'}} &deg;C</h2>
+      <img src="http://openweathermap.org/img/wn/{{day.icon}}.png" alt="" class="img">
+      <h3 class="kind-weather">{{day.tempMax}}</h3>
+      <h4 class="temp-max">Nhiệt độ cao nhất: {{day.tempMax}}&deg;C</h4>
+      <h4 class="temp-min">Nhiệt độ thấp nhất: {{day.tempMin}}&deg;C</h4>
+    </div>
   </div>
 </div>
