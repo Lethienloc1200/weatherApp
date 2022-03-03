@@ -4,6 +4,7 @@ import { CurrenWeather } from '../model/curren-weather.model';
 import { ActivatedRoute } from '@angular/router';
 // import 'rxjs,Rx';
 import { NgForm } from '@angular/forms';
+import { shareReplay } from 'rxjs';
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
@@ -45,6 +46,7 @@ export class CurrentComponent implements OnInit {
         .subscribe((res) => {
           console.log(' check res find location:', res);
           this.myWeather = new CurrenWeather(res);
+          shareReplay();
         });
     });
   }

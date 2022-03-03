@@ -5,6 +5,7 @@ export class CurrenWeather {
   weatherKind: string;
   tempMax: string;
   tempMin: string;
+
   constructor(params: any = {}) {
     this.cityName = params?.name;
     this.temp = params?.main?.temp;

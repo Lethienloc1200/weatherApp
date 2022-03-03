@@ -9,7 +9,7 @@
   </form>
   <div class="container-auto">
     <div *ngFor="let day of cityForeCast" class="box-weather">
-      <h2 class="temp-deg">{{day.day | date:'MMMM d'}} &deg;C</h2>
+      <h2 class="temp-deg">{{day.day | date:'MMMM d'}} </h2>
       <img src="http://openweathermap.org/img/wn/{{day.icon}}.png" alt="" class="img">
       <h3 class="kind-weather">{{day.weatherKind}}</h3>
       <h4 class="temp-max">Nhiệt độ cao nhất: {{day.tempMax}}&deg;C</h4>

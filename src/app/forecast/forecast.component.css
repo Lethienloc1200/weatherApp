@@ -1,4 +1,5 @@
 .box-weather {
+  padding: 0 20px;
 }
 .temp-deg {
   padding-top: 20px;
@@ -12,7 +13,7 @@ img.img {
 
 .kind-weather {
   margin: 5px 0px 29px 0px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   color: orange;
   font-family: sans-serif;
@@ -24,12 +25,14 @@ img.img {
   margin: 10px 0px;
   font-family: sans-serif;
   color: orange;
+  font-size: 15px;
 }
 
 .temp-min {
   margin: 10px 0px;
   font-family: sans-serif;
   color: #313050;
+  font-size: 15px;
 }
 .search {
   margin: auto;
@@ -68,11 +71,6 @@ button:hover {
   color: #333;
 }
 
-@media (max-width: 1300px) {
-  * {
-  }
-}
-
 .text-align-center {
   text-align: center;
   margin: 40px 0px;
@@ -81,7 +79,7 @@ button:hover {
 .container-auto {
   text-align: center;
   margin: auto;
-  width: 80%;
+  width: 100%;
   padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -90,7 +88,7 @@ button:hover {
 .black-bg {
   /* background-color: #2f2f2f87; */
   height: 500px;
-  margin: 0 50px;
+  margin: 0 30px;
   box-shadow: 2px -2px 8px 3px #d4d0e9;
 }
 @media (max-width: 1300px) {
