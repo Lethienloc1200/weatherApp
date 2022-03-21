@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../service/weather.service';
 import { CurrenWeather } from '../model/curren-weather.model';
 import { ActivatedRoute } from '@angular/router';
-// import 'rxjs,Rx';
+
 import { NgForm } from '@angular/forms';
-import { shareReplay } from 'rxjs';
+import { BehaviorSubject, shareReplay, tap } from 'rxjs';
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
@@ -13,7 +13,7 @@ import { shareReplay } from 'rxjs';
 export class CurrentComponent implements OnInit {
   location: any = {};
   myWeather: CurrenWeather = new CurrenWeather();
-
+  private storeBehaviorSubject = new BehaviorSubject(null);
   constructor(
     private weatherService: WeatherService,
     private route: ActivatedRoute
@@ -34,20 +34,37 @@ export class CurrentComponent implements OnInit {
         this.weatherService.getDataWeather(lat, lon).subscribe((res) => {
           console.log(' check res:', res);
           this.myWeather = new CurrenWeather(res);
+          console.log(' check  this.myWeather:', this.myWeather);
         });
       });
     });
   }
 
+  // findLocation(f: NgForm) {
+  //   this.weatherService.getDataCache(f.value.city).subscribe((res) => {
+  //     console.log(' check res find location:', res);
+  //     this.myWeather = new CurrenWeather(res);
+  //     shareReplay();
+  //   });
+  // }
+
   findLocation(f: NgForm) {
-    new Promise((resolve, reject) => {
+    if (!this.storeBehaviorSubject.value) {
       this.weatherService
         .getDataWeatherToFind(f.value.city)
+        .pipe(
+          tap((res) => {
+            this.storeBehaviorSubject.next(res);
+          })
+        )
         .subscribe((res) => {
           console.log(' check res find location:', res);
           this.myWeather = new CurrenWeather(res);
-          shareReplay();
+          this.storeBehaviorSubject.next(res);
         });
-    });
+    } else {
+      return this.storeBehaviorSubject.asObservable();
+    }
+    return this.storeBehaviorSubject.asObservable();
   }
 }

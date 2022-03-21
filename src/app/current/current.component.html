@@ -2,7 +2,7 @@
 
 
 
-<div class="container-auto">
+<div *ngIf="myWeather  async" class="container-auto">
   <h1>{{myWeather.cityName}}</h1>
   <h2 class="temp-deg">{{myWeather.temp}} &deg;</h2>
   <img src="http://openweathermap.org/img/wn/{{myWeather.icon}}.png" alt="" class="img">
