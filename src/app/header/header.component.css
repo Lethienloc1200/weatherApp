@@ -22,3 +22,7 @@ a.nav-link:hover {
 
   text-shadow: 2px 3px 7px #e4e58e;
 }
+.active {
+  color: rgba(120, 120, 243, 0.68) !important;
+  font-size: 27px !important;
+}

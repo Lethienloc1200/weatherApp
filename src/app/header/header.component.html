@@ -1,6 +1,8 @@
 <div class="container">
   <nav class="nav">
-    <a [routerLink]="['../']" class="nav-link">Thời tiết hôm nay</a>
-    <a [routerLink]="['forecast']" class="nav-link">Dự báo trong 5 ngày tới</a>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['current']"
+      class="nav-link">Thời
+      tiết hôm nay</a>
+    <a routerLinkActive="active" [routerLink]="['forecast']" class="nav-link">Dự báo trong 5 ngày tới</a>
   </nav>
 </div>
