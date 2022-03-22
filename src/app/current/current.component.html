@@ -5,6 +5,7 @@
 <div *ngIf="myWeather  async" class="container-auto">
   <h1>{{myWeather.cityName}}</h1>
   <h2 class="temp-deg">{{myWeather.temp}} &deg;</h2>
+
   <img src="http://openweathermap.org/img/wn/{{myWeather.icon}}.png" alt="" class="img">
   <h3 class="kind-weather">{{myWeather.weatherKind}}</h3>
   <h4 class="temp-max">Nhiệt độ cao nhất: {{myWeather.tempMax}}&deg;</h4>
@@ -17,3 +18,6 @@
         class="fa fa-search"></i></button>
   </div>
 </form>
+
+
+<!-- luu cache khi chuyển trang sang Dự báo trong 5 ngày tới -->

@@ -3,6 +3,8 @@ import { CurrenWeather } from '../model/curren-weather.model';
 import { HttpClient } from '@angular/common/http';
 import { Forecast } from '../model/forecast.model';
 import {
+  catchError,
+  delay,
   map,
   Observable,
   ReplaySubject,
@@ -10,35 +12,42 @@ import {
   Subject,
   switchMap,
   takeUntil,
+  throwError,
   timer,
 } from 'rxjs';
-// const REFRESH_INTERVAL = 10000;
-const CACHE_SIZE = 5;
+const REFRESH_INTERVAL = 10000;
+const CACHE_SIZE = 2;
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
   // myWeather?: CurrenWeather;
-  private cache$!: Observable<CurrenWeather>;
-  private reload$ = new ReplaySubject<void>(5, 500000);
+  private cache$!: Observable<Array<CurrenWeather>>;
+  private cache2$!: Observable<Array<CurrenWeather>>;
+  private reload$ = new Subject<void>();
 
   location: any = {};
   constructor(private http: HttpClient) {}
-  // test
-  getDataCache(city: string) {
+
+  getDataCacheStart(lat: any, lon: any): Observable<any> {
+    console.log('cache', this.cache2$);
+    if (!this.cache2$) {
+      this.cache2$ = this.getDataWeather(lat, lon).pipe(
+        shareReplay(CACHE_SIZE, 10000) //sau 10s reset cache
+      );
+    }
+    return this.cache2$;
+  }
+
+  // em lưu được cache rồi nhưng làm sao reset cache. Ví dụ như sau 20s reset data => rồi load data mới từ api ,
+  // e thử mà  nó call api loạn hết loạn hết, a chỉ e với e suy nghĩ theo lối mòn rồi😅
+
+  getDataCacheToFind(city: string): Observable<any> {
+    // ============BỊ SAI==
     console.log('cache', this.cache$);
     if (!this.cache$) {
-      // Set up timer that ticks every X milliseconds
-      const timer$ = timer(0);
-
-      // For each timer tick make an http request to fetch new data
-      // We use shareReplay(X) to multicast the cache so that all
-      // subscribers share one underlying source and don't re-create
-      // the source over and over again. We use takeUntil to complete
-      // this stream when the user forces an update.
-      this.cache$ = timer$.pipe(
-        switchMap(() => this.getDataWeatherToFind(city)),
-        takeUntil(this.reload$),
+      this.cache$ = this.getDataWeatherToFind(city).pipe(
+        // takeUntil(this.reload$),
         shareReplay(CACHE_SIZE)
       );
     } else {
@@ -48,13 +57,28 @@ export class WeatherService {
     return this.cache$;
   }
 
-  getDataWeather(lat: string, lon: string) {
+  getDataWeather(lat: any, lon: any): Observable<any> {
     let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a333d90d7599c543855715748387be09&units=imperial`;
-    return this.http.get(url);
+    return this.http.get<Observable<any>>(url).pipe(map((res) => res));
+  }
+  getDataWeatherAfter10s(lat: any, lon: any): Observable<any> {
+    let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a333d90d7599c543855715748387be09&units=imperial`;
+    return this.http.get<Observable<any>>(url).pipe(
+      map((res) => res),
+      delay(10000)
+    ); //==> delay sau 10s thì load lại data mới ==>sai
   }
   getDataWeatherToFind(city: string): Observable<any> {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a333d90d7599c543855715748387be09&units=imperial`;
-    return this.http.get<CurrenWeather>(url).pipe(map((res) => res));
+    return this.http.get<Observable<any>>(url).pipe(
+      map((res) => res),
+      catchError((err) => {
+        throw (
+          (alert('Nhập địa điểm chưa đúng,\n ==> Nhập lại tên '),
+          'error in source. Details: ' + err)
+        );
+      })
+    );
   }
 
   get5DayDataWeather(city: string): Observable<Forecast> {
